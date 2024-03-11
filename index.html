@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David & Naja's Wedding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"> <!-- Load Playfair Display font -->
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: 'Playfair Display', serif; /* Use Playfair Display font */
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #ffcccc;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ff3333;
+        }
+
+        main {
+            padding: 20px;
+            padding-bottom: 50px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        footer {
+            background-color: #ffcccc;
+            color: #333;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 999;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        // Download functionality
+        function downloadFile(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+        
+            element.style.display = 'none';
+            document.body.appendChild(element);
+        
+            element.click();
+        
+            document.body.removeChild(element);
+        }
+        
+        function downloadHTML() {
+            var htmlContent = document.documentElement.outerHTML;
+            downloadFile('wedding_website.html', htmlContent);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>David & Naja's Wedding</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gifts">Gifts</a></li>
+                <li><a href="#travel">Travel</a></li>
+                <li><a href="#accommodation">Accommodation</a></li>
+                <li><a href="#info">Extra Info</a></li>
+                <li><a href="#" id="translate">Translate</a></li>
+                <li><a href="#" onclick="downloadHTML()">Download</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Welcome</h2>
+            <p>Welcome to the wedding website of David and Naja! We are excited to celebrate our special day with you.</p>
+        </section>
+        <section id="gifts">
+            <h2>Gifts</h2>
+            <p>Thank you for considering giving us a gift. Your presence at our wedding is the greatest gift of all, but if you wish to contribute in another way, we have created a registry at [Registry Store Name].</p>
+        </section>
+        <section id="travel">
+            <h2>Travel</h2>
+            <p>If you are traveling from out of town, we have arranged special rates with nearby hotels. Please visit our Accommodation page for more information.</p>
+        </section>
+        <section id="accommodation">
+            <h2>Accommodation</h2>
+            <p>We have reserved a block of rooms at [Hotel Name] for our guests. Please mention our names when booking to receive the discounted rate.</p>
+        </section>
+        <section id="info">
+            <h2>Extra Information</h2>
+            <p>For additional details about our wedding day, attire, parking, and more, please visit our wedding website at [Website URL].</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 David & Naja's Wedding</p>
+    </footer>
+
+    <script>
+        $(document).ready(function(){
+            $('#translate').click(function(){
+                if ($('html').attr('lang') == 'en') {
+                    $('html').attr('lang', 'de');
+                    $('#home h2').text('Willkommen');
+                    $('#home p').text('Willkommen auf der Hochzeitswebsite von David und Naja! Wir freuen uns, unseren besonderen Tag mit Ihnen zu feiern.');
+                    $('#gifts h2').text('Geschenke');
+                    $('#gifts p').text('Vielen Dank, dass Sie darüber nachdenken, uns ein Geschenk zu machen. Ihre Anwesenheit bei unserer Hochzeit ist das größte Geschenk von allen, aber wenn Sie auf eine andere Weise beitragen möchten, haben wir ein Register bei [Register Store Name] erstellt.');
+                    $('#travel h2').text('Reisen');
+                    $('#travel p').text('Wenn Sie von außerhalb der Stadt anreisen, haben wir spezielle Tarife mit nahegelegenen Hotels vereinbart. Bitte besuchen Sie unsere Unterbringungsseite für weitere Informationen.');
+                    $('#accommodation h2').text('Unterkunft');
+                    $('#accommodation p').text('Wir haben einen Block Zimmer im [Hotel Name] für unsere Gäste reserviert. Bitte geben Sie unsere Namen bei der Buchung an, um den ermäßigten Preis zu erhalten.');
+                    $('#info h2').text('Zusätzliche Informationen');
+                    $('#info p').text('Für weitere Details zu unserem Hochzeitstag, Kleidung, Parken und mehr besuchen Sie bitte unsere Hochzeitswebsite unter [Website URL].');
+                    $(this).text('Translate back');
+                } else {
+                    $('html').attr('lang', 'en');
+                    $('#home h2').text('Welcome');
+                    $('#home p').text('Welcome to the wedding website of David and Naja! We are excited to celebrate our special day with you.');
+                    $('#gifts h2').text('Gifts');
+                    $('#gifts p').text('Thank you for considering giving us a gift. Your presence at our wedding is the greatest gift of all, but if you wish to contribute in another way, we have created a registry at [Registry Store Name].');
+                    $('#travel h2').text('Travel');
+                    $('#travel p').text('If you are traveling from out of town, we have arranged special rates with nearby hotels. Please visit our Accommodation page for more information.');
+                    $('#accommodation h2').text('Accommodation');
+                    $('#accommodation p').text('We have reserved a block of rooms at [Hotel Name] for our guests. Please mention our names when booking to receive the discounted rate.');
+                    $('#info h2').text('Extra Information');
+                    $('#info p').text('For additional details about our wedding day, attire, parking, and more, please visit our wedding website at [Website URL].');
+                    $(this).text('Translate');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
